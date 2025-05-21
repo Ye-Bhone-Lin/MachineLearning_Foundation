@@ -32,7 +32,7 @@ else:
     
     st.write(data)
     
-    model = pickle.load(open('D:\MachineLearning_Foundation\Machine Learning\model.pkl', 'rb'))
+    model = pickle.load(open('model.pkl', 'rb'))
     prediction = model.predict(data)
     with st.spinner("Wait for it..."):
         time.sleep(1)

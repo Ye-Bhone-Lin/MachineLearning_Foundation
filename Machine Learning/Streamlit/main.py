@@ -16,29 +16,30 @@ if radio == "About":
                 """)
 
 else:
-    sepel_length = st.number_input(
-    "Sepel Length", value=None, placeholder="Type a number...")
+    sepal_length = st.number_input(
+    "Sepal Length", value=1, placeholder="Type a number...")
     
-    sepel_width = st.number_input(
-    "Sepel Width", value=None, placeholder="Type a number...")
+    sepal_width = st.number_input(
+    "Sepal Width", value=1, placeholder="Type a number...")
     
     petal_length = st.number_input(
-    "Petal Length", value=None, placeholder="Type a number...")
+    "Petal Length", value=1, placeholder="Type a number...")
     
     petal_width = st.number_input(
-    "Petal Width", value=None, placeholder="Type a number...")
+    "Petal Width", value=1, placeholder="Type a number...")
     
-    data = pd.DataFrame({'sepal length (cm)':[sepel_length], 'sepal width (cm)':[sepel_width], 'petal length (cm)':[petal_length],'petal width (cm)':[petal_width]})
+    data = pd.DataFrame({'sepal length (cm)':[sepal_length], 'sepal width (cm)':[sepal_width], 'petal length (cm)':[petal_length],'petal width (cm)':[petal_width]})
     
-    st.write(data)
     
-    model = pickle.load(open('model.pkl', 'rb'))
-    prediction = model.predict(data)
-    with st.spinner("Wait for it..."):
-        time.sleep(1)
-        if prediction == 0:
-            st.write(f"Iris species is setosa")
-        elif prediction == 1:
-            st.write(f"Iris species is versicolor")
-        else:
-            st.write(f"Iris species is virginica")
+    if data is not None:
+        st.write(data)
+        model = pickle.load(open('model.pkl', 'rb'))
+        prediction = model.predict(data)
+        with st.spinner("Wait for it..."):
+            time.sleep(1)
+            if prediction == 0:
+                st.write(f"Iris species is setosa")
+            elif prediction == 1:
+                st.write(f"Iris species is versicolor")
+            else:
+                st.write(f"Iris species is virginica")

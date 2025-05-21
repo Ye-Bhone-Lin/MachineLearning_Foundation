@@ -1,6 +1,7 @@
 import streamlit as st 
 import pandas as pd
 import pickle 
+import time
 
 st.markdown("<h1 style='text-align: center; color: white;'>Iris Classification</h1>", unsafe_allow_html=True)
 with st.sidebar:
@@ -31,7 +32,7 @@ else:
     
     st.write(data)
     
-    model = pickle.load(open('model.pkl', 'rb'))
+    model = pickle.load(open('D:\MachineLearning_Foundation\Machine Learning\model.pkl', 'rb'))
     prediction = model.predict(data)
     with st.spinner("Wait for it..."):
         time.sleep(1)
